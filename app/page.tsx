@@ -2,100 +2,61 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="relative min-h-screen text-black bg-gradient-to-b from-white to-gray-50/50 flex flex-col items-center">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:6rem_4rem]" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <nav className="flex justify-between items-center w-full max-w-6xl p-6">
+        <h1 className="text-2xl font-bold">Assistly - AI Chatbot</h1>
+        <ul className="flex space-x-6">
+          <li>Features</li>
+          <li>Use Cases</li>
+          <li>Pricing</li>
+          <li>Contact Us</li>
+        </ul>
+      </nav>
+
+      <section className="flex flex-col items-center text-center mt-16">
+        <h2 className="text-5xl font-extrabold bg-black text-transparent bg-clip-text">
+          AI Chatbot for Your Business
+        </h2>
+        <p className="mt-4 text-black max-w-2xl">
+          Deploy a customizable AI chatbot for customer service. Train it in
+          real time and integrate it seamlessly into your business website.
+        </p>
+
+        <div className="mt-6 flex space-x-4">
+          <button className="px-6 py-2 bg-black text-white rounded-lg">
+            Get Started
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <section className="mt-16 px-6 text-center">
+        <h3 className="text-3xl font-semibold mb-8">Why Choose Us?</h3>
+        <div className="flex flex-wrap justify-center gap-8">
+          <div className="max-w-sm w-full p-6 bg-white border-2 border-gray-300 rounded-lg shadow-lg">
+            <h4 className="text-xl font-bold">Instant Support</h4>
+            <p className="mt-2 text-gray-600">
+              Get immediate assistance with our AI-powered chatbot, available at
+              any time.
+            </p>
+          </div>
+
+          <div className="max-w-sm w-full p-6 bg-white border-2 border-gray-300 rounded-lg shadow-lg">
+            <h4 className="text-xl font-bold">Customizable Responses</h4>
+            <p className="mt-2 text-gray-600">
+              Tailor responses to fit your business needs and tone.
+            </p>
+          </div>
+
+          <div className="max-w-sm w-full p-6 bg-white border-2 border-gray-300 rounded-lg shadow-lg">
+            <h4 className="text-xl font-bold">Seamless Integration</h4>
+            <p className="mt-2 text-gray-600">
+              Easily integrate the chatbot with your website and other tools.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
