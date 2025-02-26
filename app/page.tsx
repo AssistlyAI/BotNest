@@ -5,16 +5,6 @@ export default function Home() {
     <div className="relative min-h-screen text-black bg-gradient-to-b from-white to-gray-50/50 flex flex-col items-center">
       <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:6rem_4rem]" />
 
-      <nav className="flex justify-between items-center w-full max-w-6xl p-6">
-        <h1 className="text-2xl font-bold">Assistly - AI Chatbot</h1>
-        <ul className="flex space-x-6">
-          <li>Features</li>
-          <li>Use Cases</li>
-          <li>Pricing</li>
-          <li>Contact Us</li>
-        </ul>
-      </nav>
-
       <section className="flex flex-col items-center text-center mt-16">
         <h2 className="text-5xl font-extrabold bg-black text-transparent bg-clip-text">
           AI Chatbot for Your Business
