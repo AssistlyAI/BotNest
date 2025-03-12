@@ -18,14 +18,16 @@ export const metadata: Metadata = {
   description: "AI-powered chatbot for businesses",
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>
-          <main>{children}</main>
+        <body className="min h-screen flex">
+          {children}
         </body>
       </html>
     </ClerkProvider>

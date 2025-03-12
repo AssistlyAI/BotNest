@@ -10,8 +10,9 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleGetStarted = () => {
-    router.push("/dashboard");
+    router.push("/admin");
   };
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -96,7 +97,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="mt-16 px-6 text-center max-w-screen-xl w-full">
         <h3 className="text-3xl font-semibold mb-8 sm:text-2xl">
           Why Choose Us?
