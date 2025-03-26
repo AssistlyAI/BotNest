@@ -1,12 +1,7 @@
-export default function Home(){
+export default function Home() {
   return (
     <main className="">
-      <h1>
-        Assistly a Virtual ChatBot
-      </h1>
+      <h1>Assistly a Virtual ChatBot</h1>
     </main>
-
-
-  )
-
+  );
 }
