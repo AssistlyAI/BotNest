@@ -13,26 +13,62 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Chat{
-     id      String   @id @default(uuid())
-     title  String
-     userId String
-     message Messages[]
-     createdAt DateTime @default(now())
-     updatedAt DateTime @updatedAt
+model User {
+  id                 String   @id @default(uuid())
+  userName           String
+  userId             String   @unique
+  userEmail          String
+  hasActiveMembership Boolean @default(false)
+  stripeCustomerId   String   @default("")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
 }
 
-model Messages{
-    id      String   @id @default(uuid())
-    chatId String
-    chat Chat @relation(fields: [chatId], references: [id])
-    content String
-    role   Role
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model Chatbot {
+  id                      String                  @id @default(uuid())
+  userId                  String
+  name                    String
+  created_at              DateTime                @default(now())
+  characteristics         ChatbotCharacteristics[]
+  chatSessions            ChatSession[]
 }
 
-enum Role{
-  user
-  assistant
+model ChatbotCharacteristics {
+  id         String    @id @default(uuid())
+  chatbotId  String
+  content    String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  chatbot    Chatbot   @relation(fields: [chatbotId], references: [id])
 }
+
+model ChatSession {
+  id         String     @id @default(uuid())
+  chatbotId  String
+  guestId    String
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  chatbot    Chatbot    @relation(fields: [chatbotId], references: [id])
+  guest      Guest      @relation(fields: [guestId], references: [id])
+  messages   Message[]
+}
+
+model Message {
+  id             String    @id @default(uuid())
+  chatSessionId  String
+  content        String
+  sender         String
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+  chatSession    ChatSession @relation(fields: [chatSessionId], references: [id])
+}
+
+model Guest {
+  id         String        @id @default(uuid())
+  name       String
+  email      String
+  created_at DateTime      @default(now())
+  updated_at DateTime      @updatedAt
+  chatSessions ChatSession[]
+}
+

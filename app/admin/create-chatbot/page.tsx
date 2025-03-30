@@ -13,7 +13,7 @@ function CreateChatBot() {
   const [isCreating, setIsCreating] = useState(false);
 
   const handleChatbot = async () => {
-    const title = chatbotName;
+    const name = chatbotName;
     setChatbotName("");
     setIsCreating(true);
     try {
@@ -22,8 +22,9 @@ function CreateChatBot() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, userId }),
+        body: JSON.stringify({ name, userId }),
       });
+
       setIsCreating(false);
     } catch (error) {
       console.log(error);

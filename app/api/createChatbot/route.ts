@@ -3,11 +3,11 @@ import { stat } from "fs";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request, res: Response) {
-  const { title, userId } = await req.json();
+  const { name, userId } = await req.json();
   try {
-    await prismaClient.chat.create({
+    await prismaClient.chatbot.create({
       data: {
-        title,
+        name,
         userId,
       },
     });

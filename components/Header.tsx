@@ -25,6 +25,14 @@ function Header() {
       </Link>
 
       <div className="flex items-center ">
+        <Link
+          href="/upgrade"
+          className="bg-gradient-to-r from-blue-500 via-white-500 to-blue-100
+                       text-white font-semibold px-5 py-2 rounded-full
+                       hover:opacity-90 transition-all shadow-md cursor-pointer"
+        >
+          Pricing
+        </Link>
         <SignedIn>
           <UserButton showName />
         </SignedIn>
