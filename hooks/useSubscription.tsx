@@ -30,7 +30,7 @@ export function useSubscription(refreshTrigger?: any) {
         setHasActiveMembership(userData.hasActiveMembership);
 
         // Fetch chatbot info
-        const chatbotRes = await fetch(`/api/getChatbot?userId=${userId}`);
+        const chatbotRes = await fetch(`/api/getChatbots?userId=${userId}`);
         const chatbotData = await chatbotRes.json();
 
         if (!chatbotRes.ok) {

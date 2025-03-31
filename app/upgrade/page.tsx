@@ -4,16 +4,12 @@ import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { useSubscription } from "@/hooks/useSubscription";
 import getStripe from "@/lib/stripe-js";
-// import { createCheckoutSession } from "@/actions/createCheckoutSession";
-// import createStripePortal from "@/actions/createStripePortal";
-// import { Button } from "@/components/ui/button";
-// import { useSubscription } from "@/hooks/useSubscription";
-// import getStripe from "@/lib/stripe-js";
 import { useUser } from "@clerk/nextjs";
 import { CheckIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useTransition } from "react";
-import { createCheckoutSession } from "../actions/createCheckoutSession";
+import createStripePortal from "@/actions/createStripePortal";
+import { createCheckoutSession } from "@/actions/createCheckoutSession";
 
 export type userDetails = {
   email: string;
@@ -26,7 +22,7 @@ function PricingPage() {
   //pull the user's subscription.
   const { loading, hasActiveMembership } = useSubscription();
   const [isPending, setTransition] = useTransition();
-
+  console.log(hasActiveMembership);
   const handleUpgrade = () => {
     if (!user) return;
 
@@ -40,8 +36,8 @@ function PricingPage() {
       const stripe = await getStripe();
       if (hasActiveMembership) {
         //create the stripe portal
-        // const stripePortalUrl = await createStripePortal();
-        // return router.push(stripePortalUrl);
+        const stripePortalUrl = await createStripePortal();
+        return router.push(stripePortalUrl);
       }
       const sessionId = await createCheckoutSession(userDetails);
       await stripe?.redirectToCheckout({
@@ -130,7 +126,6 @@ function PricingPage() {
                 : hasActiveMembership
                   ? "Manage Plan"
                   : "Upgrade to Pro"}
-              Upgrade to Pro
             </Button>
             <ul
               role="list"

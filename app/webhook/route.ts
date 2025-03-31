@@ -12,20 +12,19 @@ export async function POST(req: NextRequest) {
   if (!signature) {
     return new Response("No Signature", { status: 400 });
   }
-  if (!process.env.WEB_HOOK_SECRET) {
+  if (!process.env.STRIPE_WEBHOOK_SECRET_KEY) {
     console.log("Stripe webhook secret is not set");
     return new NextResponse("Stripe webhook secret is not set", {
       status: 400,
     });
   }
-  //  console.log("DEBUG, The webhook is triggering");
   let event: Stripe.Event;
 
   try {
     event = stripe.webhooks.constructEvent(
       body,
       signature,
-      process.env.WEB_HOOK_SECRET
+      process.env.STRIPE_WEBHOOK_SECRET_KEY
     );
   } catch (err) {
     console.log(`webhook error,${err}`);
@@ -33,8 +32,8 @@ export async function POST(req: NextRequest) {
   }
 
   const getUserDetails = async (customerId: string) => {
-    const user = await prismaClient.user.findUnique({
-      where: { userId: customerId },
+    const user = await prismaClient.user.findFirst({
+      where: { stripeCustomerId: customerId },
     });
 
     if (!user) {
@@ -53,7 +52,6 @@ export async function POST(req: NextRequest) {
       if (!userDetails?.id) {
         return new NextResponse("User not found", { status: 404 });
       }
-
       await prismaClient.user.update({
         where: {
           id: userDetails?.id,
@@ -62,7 +60,6 @@ export async function POST(req: NextRequest) {
           hasActiveMembership: true,
         },
       });
-      console.log("updated db");
       break;
     }
     case "customer.subscription.deleted":
