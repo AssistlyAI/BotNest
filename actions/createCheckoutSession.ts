@@ -2,8 +2,12 @@
 import getBaseUrl from "@/lib/getBaseUrl";
 import stripe from "@/lib/stripe";
 import { auth } from "@clerk/nextjs/server";
-import { userDetails } from "../upgrade/page";
 import { prismaClient } from "@/lib/prisma";
+
+export type userDetails = {
+  email: string;
+  name: string;
+};
 
 export async function createCheckoutSession(userDetails: userDetails) {
   const { userId } = await auth();

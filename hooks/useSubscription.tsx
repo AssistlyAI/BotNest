@@ -2,6 +2,9 @@
 import { useUser } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
 
+const PRO_LIMIT = 20;
+const FREE_LIMIT = 1;
+
 export function useSubscription(refreshTrigger?: any) {
   const { user } = useUser();
   const userId = user?.id;
@@ -13,6 +16,7 @@ export function useSubscription(refreshTrigger?: any) {
     useState<boolean>(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [userLimit, setUserLimit] = useState<number>();
 
   useEffect(() => {
     if (!userId) return;
@@ -28,6 +32,7 @@ export function useSubscription(refreshTrigger?: any) {
         }
 
         setHasActiveMembership(userData.hasActiveMembership);
+        setUserLimit(userData.hasActiveMembership ? PRO_LIMIT : FREE_LIMIT);
 
         // Fetch chatbot info
         const chatbotRes = await fetch(`/api/getChatbots?userId=${userId}`);
@@ -38,12 +43,12 @@ export function useSubscription(refreshTrigger?: any) {
         }
 
         // Assuming chatbotData is either a single bot or array — adjust accordingly
-        const chatbot = Array.isArray(chatbotData)
-          ? chatbotData[0]
-          : chatbotData;
+        // const chatbot = Array.isArray(chatbotData)
+        //   ? chatbotData[0]
+        //   : chatbotData;
 
-        const characteristicsCount = chatbot?.characteristics?.length || 0;
-        setHasSufficientCharacteristics(characteristicsCount > 5);
+        // const characteristicsCount = chatbot?.characteristics?.length || 0;
+        // setHasSufficientCharacteristics(characteristicsCount > 5);
       } catch (err: any) {
         setError(err.message || "Error fetching data");
       } finally {
@@ -56,7 +61,7 @@ export function useSubscription(refreshTrigger?: any) {
 
   return {
     hasActiveMembership,
-    hasSufficientCharacteristics,
+    userLimit,
     loading,
     error,
   };

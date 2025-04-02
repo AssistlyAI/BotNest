@@ -56,7 +56,7 @@ export default function AssistlyWorkflowFlowchart() {
   return (
     <section className="max-w-screen-xl mx-auto py-16 px-6 bg-gradient-to-b from-blue-50 to-white rounded-lg mt-6">
       <h2 className="text-4xl font-extrabold text-center mb-12">
-        Assistly Workflow
+        Botnest Workflow
       </h2>
       <div className="space-y-16">
         {workflowSteps.map((step, i) => (

@@ -8,7 +8,7 @@ function Sidebar() {
         <li className="flex-1">
           <Link
             href="/admin/create-chatbot"
-            className="hover:opacity-50 flex flex-col text-center lg:text-left lg:flex-row items-center gap-2 p-5 rounded-md bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white"
+            className="hover:opacity-50 flex flex-col text-center lg:text-left lg:flex-row items-center gap-2 p-5 rounded-md bg-blue-400 text-white"
           >
             <BotMessageSquare className="h-6 w-6 lg:h-8 lg:w-8" />
             <span className="hidden md:inline">Create New Chatbot</span>
@@ -16,8 +16,8 @@ function Sidebar() {
         </li>
         <li className="flex-1">
           <Link
-            href="/admin/Edit -chatbots"
-            className="hover:opacity-50 flex flex-col text-center lg:text-left lg:flex-row items-center gap-2 p-5 rounded-md bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white"
+            href="/admin/view-chatbots"
+            className="hover:opacity-50 flex flex-col text-center lg:text-left lg:flex-row items-center gap-2 p-5 rounded-md bg-blue-400 text-white"
           >
             <Pencil className="h-6 w-6 lg:h-8 lg:w-8" />
             <span className="hidden md:inline">Edit Chatbots</span>
@@ -26,7 +26,7 @@ function Sidebar() {
         <li className="flex-1">
           <Link
             href="/admin/review-sessions"
-            className="hover:opacity-50 flex flex-col text-center lg:text-left lg:flex-row items-center gap-2 p-5 rounded-md bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white"
+            className="hover:opacity-50 flex flex-col text-center lg:text-left lg:flex-row items-center gap-2 p-5 rounded-md bg-blue-400 text-white"
           >
             <ScanEye className="h-6 w-6 lg:h-8 lg:w-8" />
             <span className="hidden md:inline">Review Sessions</span>

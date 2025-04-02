@@ -2,58 +2,95 @@
 import Avatar from "@/components/Avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useSubscription } from "@/hooks/useSubscription";
 import { useUser } from "@clerk/nextjs";
 import { Loader2Icon } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { toast } from "@/hooks/use-toast";
 
 function CreateChatBot() {
   const { user } = useUser();
   const userId = user?.id;
   const [chatbotName, setChatbotName] = useState<string>("");
   const [isCreating, setIsCreating] = useState(false);
+  const { hasActiveMembership, userLimit } = useSubscription();
 
-  const handleChatbot = async () => {
-    const name = chatbotName;
-    setChatbotName("");
+  const handleChatbot = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!userId) return;
+
     setIsCreating(true);
+
     try {
+      // Fetch chatbot count
+      const countRes = await fetch(`/api/getChatbots?userId=${userId}`);
+      const chatbots = await countRes.json();
+      if (chatbots.length >= userLimit) {
+        toast({
+          variant: "destructive",
+          title: "Chatbot Limit Reached",
+          description:
+            "You've reached the maximum number of chatbots for your current plan. Please upgrade to add more.",
+        });
+        return;
+      }
+
+      // Create chatbot
       await fetch("/api/createChatbot", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, userId }),
+        body: JSON.stringify({ name: chatbotName, userId }),
       });
 
+      toast({
+        title: "Success",
+        description: "Chatbot created successfully.",
+      });
+
+      setChatbotName("");
+    } catch (error: any) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error.message || "Failed to create chatbot.",
+      });
+    } finally {
       setIsCreating(false);
-    } catch (error) {
-      console.log(error);
     }
   };
+
+  if (!user) {
+    return null;
+  }
   return (
-    <div className="flex flex-col items-center justify-center md:flex-row bg-white p-10 rounded-md m-10">
-      <Avatar seed="Virtual Chatbot" className="w-12 h-12 mr-2" />
+    <div className="flex flex-col items-center justify-center md:flex-row md:space-x-10 bg-white rounded-md p-10 m-10">
+      <Avatar seed="create-chatbot" />
       <div>
-        <h1 className="text-xl lg:text-3xl font-semobold">Create</h1>
+        <h1 className="text-xl lg:text-3xl font-semibold">Create</h1>
         <h2 className="font-light">
-          Create a new chatbot for the conversation to assist you.
+          Create a new chatbot to assist you in your conversations with your
+          customers
         </h2>
-        <Input
-          placeholder="Chatbot Name"
-          value={chatbotName}
-          onChange={(e) => setChatbotName(e.target.value)}
-        />
-        <Button
-          className="p-10 mt-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-          disabled={!chatbotName}
-          onClick={handleChatbot}
+        <form
+          onSubmit={handleChatbot}
+          className="flex flex-col md:flex-row gap-2 mt-5"
         >
-          {isCreating ? (
-            <Loader2Icon className="animate-spin" />
-          ) : (
-            " Create Chatbot"
-          )}
-        </Button>
+          <Input
+            type="text"
+            value={chatbotName}
+            onChange={(e) => setChatbotName(e.target.value)}
+            placeholder="Chatbot Name..."
+            className="max-w-lg"
+            required
+          />
+          <Button disabled={!chatbotName}>
+            {isCreating ? "Creating Chatbot..." : "Create Chatbot"}
+          </Button>
+        </form>
+        <p className="text-gray-300 mt-5">Example: Customer Support Chatbot</p>
       </div>
     </div>
   );

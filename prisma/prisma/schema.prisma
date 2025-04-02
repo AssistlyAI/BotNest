@@ -42,17 +42,6 @@ model ChatbotCharacteristics {
   chatbot    Chatbot   @relation(fields: [chatbotId], references: [id])
 }
 
-model ChatSession {
-  id         String     @id @default(uuid())
-  chatbotId  String
-  guestId    String
-  created_at DateTime   @default(now())
-  updated_at DateTime   @updatedAt
-  chatbot    Chatbot    @relation(fields: [chatbotId], references: [id])
-  guest      Guest      @relation(fields: [guestId], references: [id])
-  messages   Message[]
-}
-
 model Message {
   id             String    @id @default(uuid())
   chatSessionId  String
@@ -70,5 +59,16 @@ model Guest {
   created_at DateTime      @default(now())
   updated_at DateTime      @updatedAt
   chatSessions ChatSession[]
+}
+
+model ChatSession {
+  id         String     @id @default(uuid())
+  chatbotId  String
+  guestId    String
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  chatbot    Chatbot    @relation(fields: [chatbotId], references: [id])
+  guest      Guest      @relation(fields: [guestId], references: [id])
+  messages   Message[]
 }
 
