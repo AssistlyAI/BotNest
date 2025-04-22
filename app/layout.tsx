@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Assistly - AI Chatbot",
+  title: "Bostnest - AI Chatbot",
   description: "AI-powered chatbot for businesses",
 };
 
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <SyncUserWithDb />
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >

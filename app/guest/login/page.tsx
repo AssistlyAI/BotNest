@@ -15,7 +15,7 @@ function page() {
               <Avatar seed="KARTHIK Support Agent" className="h-60 w-60" />
             </div>
             <div className="text-center">
-              <h1 className="text-4xl">Assistly</h1>
+              <h1 className="text-4xl">Botnest</h1>
               <h2 className="text-base font-light">
                 Your Customisable AI Chat Agent
               </h2>

@@ -17,7 +17,7 @@ export default function BaseFooter() {
               seed="KARTHIK Support Agent"
               className="w-12 h-12 text-blue-400 fill-blue-400"
             />
-            <h1 className="font-bold text-2xl text-white">Assistly</h1>
+            <h1 className="font-bold text-2xl text-white">Botnest</h1>
           </div>
           <p className="mt-3 text-md text-white/80 text-center md:text-left">
             AI Chatbot for Your Business

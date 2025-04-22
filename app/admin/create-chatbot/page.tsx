@@ -7,6 +7,7 @@ import { useUser } from "@clerk/nextjs";
 import { Loader2Icon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 function CreateChatBot() {
   const { user } = useUser();
@@ -14,6 +15,7 @@ function CreateChatBot() {
   const [chatbotName, setChatbotName] = useState<string>("");
   const [isCreating, setIsCreating] = useState(false);
   const { hasActiveMembership, userLimit } = useSubscription();
+  const router = useRouter();
 
   const handleChatbot = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +27,7 @@ function CreateChatBot() {
       // Fetch chatbot count
       const countRes = await fetch(`/api/getChatbots?userId=${userId}`);
       const chatbots = await countRes.json();
-      if (chatbots.length >= userLimit) {
+      if (chatbots.length >= userLimit!) {
         toast({
           variant: "destructive",
           title: "Chatbot Limit Reached",
@@ -50,6 +52,10 @@ function CreateChatBot() {
       });
 
       setChatbotName("");
+
+      setTimeout(() => {
+        router.push("/admin/view-chatbots"); // 
+      }, 1500);
     } catch (error: any) {
       console.error(error);
       toast({

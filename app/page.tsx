@@ -98,23 +98,71 @@ export default function Home() {
             </div>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
-                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionTrigger>What is Botnest?</AccordionTrigger>
                 <AccordionContent>
-                  Yes. It adheres to the WAI-ARIA design pattern.
+                Botnest is a platform that helps businesses create their own AI-powered chatbot easily—without needing to code.
+                Just give your bot a name and some basic info about your business, and it’s ready to chat with your customers.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionTrigger>Do I need to know how to code to use Botnest?</AccordionTrigger>
                 <AccordionContent>
-                  Yes. It comes with default styles that matches the other
-                  components&apos; aesthetic.
+                No coding skills are needed! Botnest is a no-code platform, 
+                so anyone can set up and manage their chatbot using our simple interface.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionTrigger>How do I create a chatbot with Botnest?</AccordionTrigger>
                 <AccordionContent>
-                  Yes. It&apos;s animated by default, but you can disable it if
-                  you prefer.
+                Just follow these steps:
+                  Give your bot a title.
+                  Provide information about your business.
+                  Customize the bot’s personality and appearance.
+                  Get a link to add the chatbot to your website.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4">
+                <AccordionTrigger>Can I use Botnest on my own website?</AccordionTrigger>
+                <AccordionContent>
+                Yes! Once your chatbot is ready, you’ll get a unique URL or embed code that you can easily add to your website.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-5">
+                <AccordionTrigger>What kind of businesses can use Botnest?</AccordionTrigger>
+                <AccordionContent>
+                Any business—big or small—can use Botnest. Whether you’re in retail, healthcare, education, or any other industry, 
+                our templates and customization options make it easy to fit your needs.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-6">
+                <AccordionTrigger>Can I customize how my bot talks and looks?</AccordionTrigger>
+                <AccordionContent>
+                Yes, you can fully customize the chatbot’s tone, style, and appearance to match your brand.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-7">
+                <AccordionTrigger>How do I monitor how my chatbot is performing?</AccordionTrigger>
+                <AccordionContent>
+                Botnest gives you real-time monitoring tools, session tracking, and performance insights, 
+                so you can see how your bot is doing and improve it over time.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-8">
+                <AccordionTrigger>Will the chatbot get smarter over time?</AccordionTrigger>
+                <AccordionContent>
+                Yes! Botnest includes learning features so your chatbot can improve based on conversations and user behavior.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-9">
+                <AccordionTrigger>Is it easy to integrate Botnest with other tools or platforms?</AccordionTrigger>
+                <AccordionContent>
+                Absolutely. Botnest offers quick API integration options so you can connect your chatbot with your existing systems.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-10">
+                <AccordionTrigger>Can I see what users are saying to the chatbot?</AccordionTrigger>
+                <AccordionContent>
+                Yes, you can view full conversation logs, track user interactions, and get detailed analytics to understand engagement and improve the bot’s responses.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

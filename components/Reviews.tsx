@@ -19,41 +19,51 @@ import { StarIcon } from "lucide-react";
 function Reviews() {
   const reviews = [
     {
-      name: "Sarah Thompson",
-      role: "Product Manager, Tech Innovations Inc.",
+      name: "Sarah Mitchell",
+      role: "Customer Support Manager, FreshGlow Skincare",
       rating: 5,
       review:
-        "This AI tool has completely transformed how our team approaches project analysis. The insights are incredibly precise, saving us weeks of manual work. It's like having a super-intelligent team member available 24/7.",
+        "Botnest made setting up our chatbot so easy! We had it live on our site in less than an hour, and it handles most of our customer inquiries instantly. It’s been a game changer for our support team.",
+      avatar:
+        "https://static.vecteezy.com/system/resources/previews/019/900/322/non_2x/happy-young-cute-illustration-face-profile-png.png",
+    //https://chat.openai.com/_sandbox/file_00000000b64c6230bacc1fbfbbec04c4/sarah_mitchell.png
+    },
+    {
+      name: "Rajiv Patel",
+      role: "Founder, Patel Electronics",
+      rating: 4,
+      review:
+        "I’m not a tech person, but Botnest’s no-code builder was super simple. I just added a few details about my business and the chatbot was up and running. It even sounds like a real team member!",
       avatar:
         "https://static.vecteezy.com/system/resources/previews/019/900/322/non_2x/happy-young-cute-illustration-face-profile-png.png",
     },
     {
-      name: "Michael Rodriguez",
-      role: "Startup Founder",
+      name: "Elena Garcia",
+      role: "Marketing Director, Bloom & Beyond",
       rating: 5,
       review:
-        "As a solo entrepreneur, this platform has been a game-changer. The AI-powered insights help me make data-driven decisions quickly, giving me a competitive edge I never had before. The intuitive interface makes complex analysis feel effortless.",
+        "What I love most is how customizable the bot is. We tailored the tone and look to match our brand perfectly. Plus, the analytics help us understand what our customers really care about.",
       avatar:
         "https://static.vecteezy.com/system/resources/previews/019/900/322/non_2x/happy-young-cute-illustration-face-profile-png.png",
     },
     {
-      name: "Emily Chen",
-      role: "Research Analyst",
+      name: "James Liu",
+      role: "Product Manager, NexaTech Solutions",
       rating: 4,
       review:
-        "Impressive AI capabilities that go beyond simple data processing. The tool provides nuanced insights and helps me uncover trends I would have missed. The collaboration features are robust and make team research a breeze.",
+        "Botnest integrates easily with our existing tools and gives us clear insights into customer behavior. We’ve seen a noticeable drop in repetitive queries since using it",
       avatar:
         "https://static.vecteezy.com/system/resources/previews/019/900/322/non_2x/happy-young-cute-illustration-face-profile-png.png",
     },
     {
-      name: "Karthik",
-      role: "Research Analyst",
-      rating: 4,
+      name: "Aisha Khan",
+      role: "Operations Lead, QuickFix Services",
+      rating: 5,
       review:
-        "Impressive AI capabilities that go beyond simple data processing. The tool provides nuanced insights and helps me uncover trends I would have missed. The collaboration features are robust and make team research a breeze.",
+      "The real-time monitoring and performance tracking features are really helpful. We can see exactly how the bot is performing and tweak it on the go. Highly recommend!",
       avatar:
-        "https://static.vecteezy.com/system/resources/previews/019/900/322/non_2x/happy-young-cute-illustration-face-profile-png.png",
-    },
+      "https://static.vecteezy.com/system/resources/previews/019/900/322/non_2x/happy-young-cute-illustration-face-profile-png.png",
+    }
   ];
 
   const renderStars = (rating: any) => {

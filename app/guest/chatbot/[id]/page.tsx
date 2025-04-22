@@ -75,10 +75,14 @@ function ChatbotPage({ params }: { params: Promise<{ id: string }> }) {
 
   const handleInformationSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
     setLoading(true);
     const chatId = await startNewChat(name, email, id);
-    console.log(chatId);
+    setMessages(m=>[...m,{id: Date.now(),
+      content: `Welcome ${name}!\nHow can I assist you today 😀`,
+      created_at: new Date().toISOString(),
+      sender: "ai",
+      chatSessionId: chatId,}])
+    // console.log(chatId);
     setChatId(chatId);
     setLoading(false);
     setIsOpen(false);
@@ -147,6 +151,8 @@ function ChatbotPage({ params }: { params: Promise<{ id: string }> }) {
       console.log("Error sending message: ", error);
     }
   }
+
+  // console.log("loadingMessages",messages);
   return (
     <div className="w-full flex py-4">
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
