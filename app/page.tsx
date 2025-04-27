@@ -20,8 +20,8 @@ export default function Home() {
   return (
     <div className="flex-1">
       <div className="relative w-full min-h-screen bg-gradient-to-b from-white to-gray-50/50">
-        <Navbar />
         <div className="absolute inset-0 -z-10  h-full  w-full bg-white bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:6rem_4rem]" />
+        <Navbar />
         <div className="overflow-y-scroll h-full">
           <section className="relative z-10 flex flex-col items-center text-center mt-16 px-6 max-w-screen-xl mx-auto">
             <Avatar seed="KARTHIK Support Agent" className="h-40 w-40" />

@@ -15,7 +15,7 @@ function Navbar() {
       <div className="flex gap-2 items-center">
         <Avatar seed="KARTHIK Support Agent" className="h-12 w-12" />
         <Link href="/" className=" font-bold text-2xl">
-          Botnest
+          BotNest
         </Link>
       </div>
       <div>

@@ -7,7 +7,7 @@ import { toast } from "@/hooks/use-toast";
 import getBaseUrl from "@/lib/getBaseUrl";
 import { Copy } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { FormEvent, use, useEffect, useState } from "react";
 import { useSubscription } from "@/hooks/useSubscription";
 
@@ -33,6 +33,7 @@ function EditChatbot({ params }: { params: Promise<{ id: string }> }) {
   const [data, setData] = useState<ChatbotData>();
   const { hasActiveMembership } = useSubscription();
   const limit = hasActiveMembership ? PRO : FREE;
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,6 +71,7 @@ function EditChatbot({ params }: { params: Promise<{ id: string }> }) {
       const result = await fetch(`/api/deleteChatbotById?chatbotId=${id}`, {
         method: "DELETE",
       });
+      f;
 
       if (result) {
         toast({
@@ -77,6 +79,8 @@ function EditChatbot({ params }: { params: Promise<{ id: string }> }) {
           description: "Chatbot Successfully Deleted",
         });
       }
+
+      router.push("/admin/view-chatbots");
     } catch (error) {
       console.error("Error deleting the chatbot:", error);
       toast({
@@ -88,7 +92,7 @@ function EditChatbot({ params }: { params: Promise<{ id: string }> }) {
   };
 
   const handleNewCharacteristic = async (newCharacteristic: string) => {
-    if (data.characteristics.length > limit) {
+    if (!data || data.characteristics.length > limit) {
       toast({
         variant: "destructive",
         title: "Chatbot Characteristics Limit Reached",

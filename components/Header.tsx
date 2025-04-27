@@ -14,7 +14,7 @@ function Header() {
         />
 
         <div className="space-y-1">
-          <h1>Botnest</h1>
+          <h1>BotNest</h1>
           <h2 className="text-sm">Your Customizable AI Chat Agent</h2>
         </div>
       </Link>
