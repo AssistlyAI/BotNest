@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String   @id @default(uuid())
+  userName           String
+  userId             String   @unique
+  userEmail          String
+  hasActiveMembership Boolean @default(false)
+  stripeCustomerId   String   @default("")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Chatbot {
+  id                      String                  @id @default(uuid())
+  userId                  String
+  name                    String
+  created_at              DateTime                @default(now())
+  characteristics         ChatbotCharacteristics[]
+  chatSessions            ChatSession[]
+}
+
+model ChatbotCharacteristics {
+  id         String    @id @default(uuid())
+  chatbotId  String
+  content    String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  chatbot    Chatbot   @relation(fields: [chatbotId], references: [id])
+}
+
+model Message {
+  id             String    @id @default(uuid())
+  chatSessionId  String
+  content        String
+  sender         String
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+  chatSession    ChatSession @relation(fields: [chatSessionId], references: [id])
+}
+
+model Guest {
+  id         String        @id @default(uuid())
+  name       String
+  email      String
+  created_at DateTime      @default(now())
+  updated_at DateTime      @updatedAt
+  chatSessions ChatSession[]
+}
+
+model ChatSession {
+  id         String     @id @default(uuid())
+  chatbotId  String
+  guestId    String
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  chatbot    Chatbot    @relation(fields: [chatbotId], references: [id])
+  guest      Guest      @relation(fields: [guestId], references: [id])
+  messages   Message[]
+}
+
