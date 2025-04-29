@@ -63,6 +63,24 @@ function Reviews() {
       "The real-time monitoring and performance tracking features are really helpful. We can see exactly how the bot is performing and tweak it on the go. Highly recommend!",
       avatar:
       "https://static.vecteezy.com/system/resources/previews/019/900/322/non_2x/happy-young-cute-illustration-face-profile-png.png",
+    },
+    {
+      name: "Monica Green",
+      role: "IT Director, SecureNet Solutions",
+      rating: 4,
+      review:
+      "Strong performance and reliability. We experienced a few minor issues initially, but the support team was responsive and helped us resolve everything quickly.",
+      avatar:
+      "https://static.vecteezy.com/system/resources/previews/019/900/322/non_2x/happy-young-cute-illustration-face-profile-png.png",
+    },
+    {
+      name: "Tony White",
+      role: "E-commerce Operations Lead, ShopSmart",
+      rating: 5,
+      review:
+      "This platform has completely transformed how we manage orders and customer queries. The real-time updates and automated replies are a huge plus.",
+      avatar:
+      "https://static.vecteezy.com/system/resources/previews/019/900/322/non_2x/happy-young-cute-illustration-face-profile-png.png",
     }
   ];
 
