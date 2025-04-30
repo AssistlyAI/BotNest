@@ -7,7 +7,7 @@ First, run the development server:
 ```bash
 npm install
 cd prisma
-npx prisms generate
+npx prisma generate
 cd ..
 npm run dev
 # or
